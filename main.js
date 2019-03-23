@@ -1,3 +1,4 @@
+const body = document.querySelector('body');
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 let width = window.innerWidth;
@@ -6,18 +7,25 @@ canvas.width = width;
 canvas.height = height;
 let sacks = [];
 let score = 0;
+let timer = null;
+const gameState = {
+    menu: 1,
+    playing: 2,
+    end: 3
+}
+let state = 1;
 
 init = () => {
-    createInterface();
+    createStartInterface();
 
+    sacks = [];
     for(let i = 0; i < 3; i++) {
         grow();
     }
 }
 
-createInterface = () => {
+createStartInterface = () => {
     let startMenu = document.createElement('div');
-    const body = document.querySelector('body');
     body.append(startMenu);
 
     let play = document.createElement('button');
@@ -25,20 +33,61 @@ createInterface = () => {
 
     play.addEventListener('click', () => {
         body.removeChild(startMenu);
-        draw();
+        startGame();
     });
     startMenu.append(play);
 
     let scoreElement = document.createElement('p');
+    scoreElement.className = 'score';
     scoreElement.innerHTML = `SCORE: ${score}`;
     body.append(scoreElement);
+
+    timer = new Timer();
+}
+
+startGame = () => {
+    timer.clear();
+    timer.start();
+    state = 2;
+    draw();
+}
+
+createEndInterface = () => {
+    let endMenu = document.createElement('div');
+    
+    let finalScore = document.createElement('h3');
+    finalScore.innerHTML = `Your score was ${score}!`;
+    
+    let playAgain = document.createElement('button');
+    playAgain.innerHTML = 'Play Again';
+
+    playAgain.addEventListener('click', () => {
+        body.removeChild(endMenu);
+        startGame();
+    })
+    
+    body.append(endMenu);
+    endMenu.append(finalScore);
+    endMenu.append(playAgain);
 }
 
 draw = () => {
     context.clearRect(0, 0, width, height);
     drawBallsacks();
-        
-    requestAnimationFrame(draw);
+
+    if(timer.seconds == 30) {
+        state = 3;
+        endGame();
+    }
+    
+    if(state == 2) {
+        requestAnimationFrame(draw);
+    }
+}
+
+endGame = () => {
+    timer.stop();
+    createEndInterface();
 }
 
 drawBallsacks = () => {
@@ -97,7 +146,9 @@ canvas.addEventListener('click', (e) => {
             grow();
         }
     });
-    updateScore(hit);
+    if(state == gameState.playing){
+        updateScore(hit);
+    }
 });
 
 init();

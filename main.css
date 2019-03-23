@@ -25,6 +25,13 @@ button {
 p {
     position: absolute;
     top: 0;
+    color: white; 
+}
+
+.score {
     right: 40px;
-    color: white;
+}
+
+.timer {
+    right: 150px;
 }
