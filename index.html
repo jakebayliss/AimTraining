@@ -5,16 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
 </head>
 <body>
     <canvas></canvas>
     <div class="container">
         <div id="start-menu" class="menu">
+            <div class="title-container">
+                <h3 id="p" class="header title">P</h3>
+                <h3 id="o" class="header title">O</h3>
+                <h3 id="i" class="header title">I</h3>
+                <h3 id="n" class="header title">N</h3>
+                <h3 id="t" class="header title">T</h3>
+                <h3 id="r" class="header title">R</h3>
+            </div>
             <button id="start" class="menu-button">START</button>
         </div>
         <div id="end-menu" class="menu">
-            <h3 id="result"></h3>
+            <h3 id="result" class="header"></h3>
             <button id="start-again" class="menu-button">PLAY AGAIN</button>
         </div>
     </div>
@@ -29,5 +39,6 @@
     <script src="Timer.js"></script>
     <script src="Game.js"></script>
     <script src="main.js"></script>
+
 </body>
 </html>

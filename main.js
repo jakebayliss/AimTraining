@@ -6,6 +6,11 @@ canvas.width = width;
 canvas.height = height;
 let game = null;
 
+//im shit at css
+document.querySelectorAll('.menu').forEach(menu => {
+    menu.style.marginLeft = `${(width - 400)/2}px`;
+});
+
 init = () => {
     game = new Game();
 

@@ -7,13 +7,16 @@ canvas {
     background-color: #484848;
 }
 
+canvas:hover {
+    cursor: crosshair;
+}
+
 .menu {
     position: absolute;
-    top: 0;
-    margin: 10% 30%;
-    width: 40%;
-    height: 60%;
-    background-color: white;
+    top: 110px;
+    width: 400px;
+    height: 600px;
+    background-color: #080808;
 }
 
 #end-menu {
@@ -21,9 +24,27 @@ canvas {
 }
 
 .menu-button {
-    width: 40%;
-    margin: 20% 30%;
-    font-size: 20pt;
+    display: block;
+    margin: auto;
+    font-size: 22pt;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: darkred;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    color: red;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    display: block;
 }
 
 span {
@@ -40,9 +61,19 @@ span {
     right: 100px;
 }
 
-#result {
+.header {
     text-align: center;
-    margin-top: 85px;
+    margin-top: 50px;
+    color: white;
+}
+
+.title {
+    font-family: 'Francois One', sans-serif;
+    font-size: 40pt;
+    padding: 5px;
+}
+
+#result {
     font-size: 24pt;
 }
 
