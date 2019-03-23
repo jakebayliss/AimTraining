@@ -9,8 +9,25 @@
 </head>
 <body>
     <canvas></canvas>
+    <div class="container">
+        <div id="start-menu" class="menu">
+            <button id="start" class="menu-button">START</button>
+        </div>
+        <div id="end-menu" class="menu">
+            <h3 id="result"></h3>
+            <button id="start-again" class="menu-button">PLAY AGAIN</button>
+        </div>
+    </div>
+    <div class="stats">
+        <span id="timer">TIME: 00</span>
+        <span id="score">SCORE: 0</span>
+    </div>
+    <button id="pause" class="play-pause">⏸️</button>
+    <button id="play" class="play-pause">▶️</button>
+    
     <script src="Ballsack.js"></script>
     <script src="Timer.js"></script>
+    <script src="Game.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

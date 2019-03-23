@@ -7,7 +7,7 @@ canvas {
     background-color: #484848;
 }
 
-div {
+.menu {
     position: absolute;
     top: 0;
     margin: 10% 30%;
@@ -16,22 +16,50 @@ div {
     background-color: white;
 }
 
-button {
+#end-menu {
+    display: none;
+}
+
+.menu-button {
     width: 40%;
-    margin: 30% 30%;
+    margin: 20% 30%;
     font-size: 20pt;
 }
 
-p {
+span {
     position: absolute;
     top: 0;
     color: white; 
 }
 
-.score {
-    right: 40px;
+#score {
+    right: 10px;
 }
 
-.timer {
-    right: 150px;
+#timer {
+    right: 100px;
+}
+
+#result {
+    text-align: center;
+    margin-top: 85px;
+    font-size: 24pt;
+}
+
+.play-pause {
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 18pt;
+}
+
+.play-pause:focus {
+    outline: none;
+}
+
+#play {
+    display: none;
 }
