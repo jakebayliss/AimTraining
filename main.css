@@ -1,7 +1,30 @@
 body {
     margin: 0;
+    overflow: hidden;
 }
 
 canvas {
     background-color: #484848;
+}
+
+div {
+    position: absolute;
+    top: 0;
+    margin: 10% 30%;
+    width: 40%;
+    height: 60%;
+    background-color: white;
+}
+
+button {
+    width: 40%;
+    margin: 30% 30%;
+    font-size: 20pt;
+}
+
+p {
+    position: absolute;
+    top: 0;
+    right: 40px;
+    color: white;
 }

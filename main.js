@@ -1,19 +1,47 @@
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
-let width = window.innerWidth - 5;
-let height = window.innerHeight - 5;
+let width = window.innerWidth;
+let height = window.innerHeight;
 canvas.width = width;
 canvas.height = height;
 let sacks = [];
+let score = 0;
 
-function init() {
+init = () => {
+    createInterface();
+
     for(let i = 0; i < 3; i++) {
         grow();
     }
 }
 
-function draw() {
+createInterface = () => {
+    let startMenu = document.createElement('div');
+    const body = document.querySelector('body');
+    body.append(startMenu);
+
+    let play = document.createElement('button');
+    play.innerHTML = 'Play';
+
+    play.addEventListener('click', () => {
+        body.removeChild(startMenu);
+        draw();
+    });
+    startMenu.append(play);
+
+    let scoreElement = document.createElement('p');
+    scoreElement.innerHTML = `SCORE: ${score}`;
+    body.append(scoreElement);
+}
+
+draw = () => {
     context.clearRect(0, 0, width, height);
+    drawBallsacks();
+        
+    requestAnimationFrame(draw);
+}
+
+drawBallsacks = () => {
     sacks.forEach(sack => {
         context.beginPath();
         context.arc(sack.x, sack.y, sack.r, 0, 2 * Math.PI);
@@ -21,8 +49,6 @@ function draw() {
         context.fillStyle = '#C0C0C0';
         context.fill();
     });
-        
-    window.requestAnimationFrame(draw);
 }
 
 getSpawnPoint = () => {
@@ -50,15 +76,28 @@ grow = () => {
     sacks.push(sack);
 }
 
+updateScore = (hit) => {
+    if(hit){
+        score++
+    }
+    else {
+        score--;
+    }
+    let scoreElement = document.querySelector('p');
+    scoreElement.innerHTML = `SCORE: ${score}`;
+}
+
 canvas.addEventListener('click', (e) => {
-    console.log('click', e.x, e.y);
+    let hit = false;
+    console.log('click', e.x, e.y, score);
     sacks.forEach((sack, i) => {
         if(tapped(e.x, e.y, sack)) {
+            hit = true;
             disappear(i);
             grow();
         }
     });
+    updateScore(hit);
 });
 
 init();
-draw();
